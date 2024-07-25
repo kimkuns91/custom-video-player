@@ -242,6 +242,18 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
+"@types/video.js@*":
+  version "7.3.58"
+  resolved "https://registry.yarnpkg.com/@types/video.js/-/video.js-7.3.58.tgz#7e8cdafee25c75d6eb18f530b93ac52edff53c03"
+  integrity sha512-1CQjuSrgbv1/dhmcfQ83eVyYbvGyqhTvb2Opxr0QCV+iJ4J6/J+XWQ3Om59WiwCd1MN3rDUHasx5XRrpUtewYQ==
+
+"@types/videojs-mobile-ui@^0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@types/videojs-mobile-ui/-/videojs-mobile-ui-0.8.3.tgz#61a52330e1aef8ce3706d46784bb9e2d72454bfb"
+  integrity sha512-0PqZblRCggDP6GRMkQA707ZKWi3qFbw5jeLEF6FxqtAQGFrRJOCj1Tuk70n7dnA/CMKy7gwZfskqvCOvgnFzZQ==
+  dependencies:
+    "@types/video.js" "*"
+
 "@typescript-eslint/parser@^5.4.2 || ^6.0.0 || 7.0.0 - 7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-7.2.0.tgz#44356312aea8852a3a82deebdacd52ba614ec07a"
@@ -2488,6 +2500,7 @@ streamsearch@^1.1.0:
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -2830,6 +2843,13 @@ videojs-font@4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-4.2.0.tgz#fbce803d347c565816e296f527e208dc65c9f235"
   integrity sha512-YPq+wiKoGy2/M7ccjmlvwi58z2xsykkkfNMyIg4xb7EZQQNwB71hcSsB3o75CqQV7/y5lXkXhI/rsGAS7jfEmQ==
+
+videojs-mobile-ui@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/videojs-mobile-ui/-/videojs-mobile-ui-1.1.1.tgz#6b5e75df36cf688906b3662070399b23da9e8e06"
+  integrity sha512-q7vx74++bqu2763Tc/GG4qFcMt42emC8uXe/z+zFVpBIiysgAf89AgorE6m30YHWtVJWgbRIyzFVYNOxCk9qow==
+  dependencies:
+    global "^4.4.0"
 
 videojs-vtt.js@0.15.5:
   version "0.15.5"

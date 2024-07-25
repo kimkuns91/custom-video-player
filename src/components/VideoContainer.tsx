@@ -1,6 +1,7 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+
 import Player from "video.js/dist/types/player";
 import VideoJS from "./VideoJS";
 import videojs from "video.js";
@@ -11,6 +12,14 @@ interface VideoContainerProps {
 }
 
 const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent =
+      typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+    setIsMobile(/iPhone|iPad|iPod|Android/i.test(userAgent));
+  }, []);
+
   const videoJsOptions = {
     autoplay: true,
     controls: true,
@@ -29,8 +38,14 @@ const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
       videojs.log("player will dispose");
     });
   };
-  
-  return <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />;
+
+  return (
+    <VideoJS
+      options={videoJsOptions}
+      onReady={handlePlayerReady}
+      isMobile={isMobile}
+    />
+  );
 };
 
 export default VideoContainer;
