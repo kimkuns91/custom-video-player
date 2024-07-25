@@ -11,16 +11,21 @@ interface VideoJSProps {
   onReady?: (player: Player) => void;
   isMobile: boolean;
 }
+// Player 타입 확장
+interface PlayerWithMobileUI extends Player {
+  mobileUi: () => void;
+}
 
 export const VideoJS: FC<VideoJSProps> = ({ options, onReady, isMobile }) => {
   const videoRef = useRef<HTMLDivElement | null>(null);
-  const playerRef = useRef<Player | null>(null);
+  const playerRef = useRef<PlayerWithMobileUI | null>(null);
 
   useEffect(() => {
     if (!playerRef.current) {
       const videoElement = document.createElement("video-js");
 
       videoElement.classList.add("vjs-big-play-centered");
+
       if (videoRef.current) {
         videoRef.current.appendChild(videoElement);
       }
@@ -28,10 +33,9 @@ export const VideoJS: FC<VideoJSProps> = ({ options, onReady, isMobile }) => {
       const player = (playerRef.current = videojs(videoElement, options, () => {
         videojs.log("player is ready");
         onReady && onReady(player);
-      }));
+      }) as PlayerWithMobileUI);
 
       if (isMobile) {
-        // @ts-ignore
         player.mobileUi();
       }
     } else {
@@ -54,8 +58,8 @@ export const VideoJS: FC<VideoJSProps> = ({ options, onReady, isMobile }) => {
   }, [playerRef]);
 
   return (
-    <div data-vjs-player>
-      <div ref={videoRef} />
+    <div data-vjs-player className="w-full h-screen max-h-screen flex items-center justify-center bg-black">
+      <div ref={videoRef} className="w-full" />
     </div>
   );
 };
