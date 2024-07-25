@@ -1,9 +1,11 @@
 import "video.js/dist/video-js.css";
+import '@/styles/custom-videojs.css';
+import 'videojs-mobile-ui/dist/videojs-mobile-ui.css';
+import 'videojs-mobile-ui';
 
 import React, { FC, useEffect, useRef } from "react";
 
 import type Player from "video.js/dist/types/player";
-import mobileUi from "videojs-mobile-ui";
 import videojs from "video.js";
 
 interface VideoJSProps {
