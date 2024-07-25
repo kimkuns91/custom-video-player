@@ -17,8 +17,10 @@ const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
   const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    setIsMobile(detectMobile);
-    setIsTablet(detectTablet);
+    // setIsMobile(detectMobile);
+    // setIsTablet(detectTablet);
+    const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+    setIsMobile(/iPhone|iPad|iPod|Android/i.test(userAgent));
   }, []);
 
   const videoJsOptions = {
