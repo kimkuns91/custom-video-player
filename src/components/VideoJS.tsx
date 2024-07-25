@@ -1,11 +1,13 @@
 import "video.js/dist/video-js.css";
-import '@/styles/custom-videojs.css';
-import 'videojs-mobile-ui/dist/videojs-mobile-ui.css';
-import 'videojs-mobile-ui';
+import "@/styles/custom-videojs.css";
+import "videojs-mobile-ui/dist/videojs-mobile-ui.css";
+import "videojs-mobile-ui";
 
 import React, { FC, useEffect, useRef } from "react";
 
+import CustomControlBar from "./CustomControlBar";
 import type Player from "video.js/dist/types/player";
+import { addCustomControls } from "./customControls";
 import videojs from "video.js";
 
 interface VideoJSProps {
@@ -40,6 +42,8 @@ export const VideoJS: FC<VideoJSProps> = ({ options, onReady, isMobile }) => {
       if (isMobile) {
         player.mobileUi();
       }
+      // // 사용자 정의 컨트롤러 추가
+      // addCustomControls(player, options);
     } else {
       const player = playerRef.current;
 
@@ -60,8 +64,18 @@ export const VideoJS: FC<VideoJSProps> = ({ options, onReady, isMobile }) => {
   }, [playerRef]);
 
   return (
-    <div data-vjs-player className="w-full h-screen max-h-screen flex items-center justify-center bg-black">
+    <div
+      data-vjs-player
+      className="relative w-full h-screen max-h-screen flex items-center justify-center bg-black"
+    >
       <div ref={videoRef} className="w-full" />
+      {playerRef.current && (
+        <CustomControlBar
+          showControls={true}
+          player={playerRef.current}
+          options={options}
+        />
+      )}
     </div>
   );
 };

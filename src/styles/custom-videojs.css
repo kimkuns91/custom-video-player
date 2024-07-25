@@ -1,35 +1,38 @@
-/* 비디오 플레이어를 화면의 중간에 배치 */
-.video-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* 화면 높이를 100% 사용 */
-  background-color: black; /* 배경색 설정 */
-}
-
-/* 컨트롤 바 스타일링 */
-.vjs-control-bar {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.7); /* 컨트롤 바 배경색 */
-}
-
-/* 상단 컨트롤 바 스타일링 */
+/* 커스텀 비디오.js 스타일 추가 */
 .vjs-top-control-bar {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.7); /* 컨트롤 바 배경색 */
-  padding: 5px;
-  z-index: 10;
+  @apply absolute top-0 left-0 w-full px-8 flex justify-between items-center bg-black/30 z-10;
 }
 
-/* 하단 컨트롤 바 스타일링 */
 .vjs-bottom-control-bar {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.7); /* 컨트롤 바 배경색 */
-  padding: 5px;
+  @apply absolute bottom-0 left-0 w-full px-8 flex justify-between items-center bg-black/30 z-10;
+}
+
+/* 타이틀 스타일 */
+.video-title {
+  @apply text-center text-white mx-4 flex-grow;
+}
+
+.custom-control-button {
+  @apply text-white flex items-center justify-center w-10 h-10 hover:scale-125 transition-transform duration-200;
+}
+
+.volume-control {
+  @apply relative;
+}
+
+.volume-slider {
+  @apply absolute bottom-full left-1/2 transform -translate-x-1/2 w-12 h-36 bg-black bg-opacity-70 flex flex-col items-center justify-center p-2;
+}
+
+.volume-slider input {
+  @apply h-2/3 w-24 bg-white appearance-none bg-transparent outline-none transform rotate-90;
+}
+
+.volume-slider input::-webkit-slider-thumb {
+  @apply w-4 h-4 bg-white rounded-full cursor-pointer;
+  -webkit-appearance: none;
+}
+
+.volume-slider input::-moz-range-thumb {
+  @apply w-4 h-4 bg-white rounded-full cursor-pointer;
 }

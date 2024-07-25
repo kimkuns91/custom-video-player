@@ -25,7 +25,7 @@ const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
 
   const videoJsOptions = {
     autoplay: true,
-    controls: true,
+    controls: false,
     responsive: true,
     fluid: true,
     sources: video.sources,
