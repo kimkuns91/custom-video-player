@@ -29,6 +29,7 @@ interface CustomControlBarProps {
   title: string;
   releaseDate: Date;
   showControls: boolean;
+  container: HTMLDivElement;
   player: PlayerWithMobileUI;
   options: any;
   nextVideo?: string | null;
@@ -38,6 +39,7 @@ const CustomControlBar: React.FC<CustomControlBarProps> = ({
   title,
   releaseDate,
   showControls,
+  container,
   player,
   options,
   nextVideo,
@@ -151,12 +153,15 @@ const CustomControlBar: React.FC<CustomControlBarProps> = ({
   };
 
   const handleFullscreenToggle = () => {
-    if (player.isFullscreen()) {
-      player.exitFullscreen();
-    } else {
-      player.requestFullscreen();
+    if (container) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+        setIsFullscreen(false);
+      } else {
+        container.requestFullscreen();
+        setIsFullscreen(true);
+      }
     }
-    setIsFullscreen(player.isFullscreen());
   };
 
   const handleSpeedChange = (speed: number) => {
@@ -211,7 +216,7 @@ const CustomControlBar: React.FC<CustomControlBarProps> = ({
         onClick={handlePlayPause}
       >
         {showPlayPauseIcon && (
-          <div className="w-1/6 bg-black/30 rounded-full p-8">
+          <div className="w-1/6 max-w-24 bg-black/30 rounded-full p-4">
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
           </div>
         )}

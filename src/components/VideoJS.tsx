@@ -34,7 +34,7 @@ export const VideoJS: FC<VideoJSProps> = ({
   const [showControls, setShowControls] = useState(false);
   const [aspectRatio, setAspectRatio] = useState("16 / 9");
 
-  console.log("aspectRatio", aspectRatio);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLDivElement | null>(null);
   const playerRef = useRef<PlayerWithMobileUI | null>(null);
   const timerRef = useRef<number | null>(null);
@@ -148,23 +148,29 @@ export const VideoJS: FC<VideoJSProps> = ({
 
   return (
     <div
-      data-vjs-player
-      className="relative w-full h-screen max-h-screen flex items-center justify-center bg-black scrollbar-hide"
+      ref={containerRef}
+      className="relative w-full h-screen min-h-screen max-h-screen bg-black text-sm md:text-2xl focus:outline-none"
     >
       <div
-        ref={videoRef}
-        className="w-full mx-auto"
-        style={{
-          aspectRatio,
-          objectFit: "contain",
-          maxHeight: "100%",
-        }}
-      />
-      {playerRef.current && (
+        data-vjs-player
+        className="relative w-full h-screen max-h-screen flex items-center justify-center bg-black scrollbar-hide"
+      >
+        <div
+          ref={videoRef}
+          className="w-full mx-auto"
+          style={{
+            aspectRatio,
+            objectFit: "contain",
+            maxHeight: "100%",
+          }}
+        />
+      </div>
+      {containerRef.current && playerRef.current && (
         <CustomControlBar
           title={title}
           releaseDate={releaseDate}
           showControls={showControls}
+          container={containerRef.current}
           player={playerRef.current}
           options={options}
           nextVideo={nextVideo}
