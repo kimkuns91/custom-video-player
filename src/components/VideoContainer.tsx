@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import { isMobile, isTablet } from "react-device-detect";
+import { isMobile as detectMobile, isTablet as detectTablet } from "react-device-detect";
 
 import Player from "video.js/dist/types/player";
 import VideoJS from "./VideoJS";
@@ -16,7 +16,13 @@ const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   useEffect(() => {
-    setIsMobileOrTablet(isMobile || isTablet);
+    const userAgent =
+      typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+    const isTouchDevice = ('ontouchend' in document);
+    const isMobileOrTabletDevice = /iPhone|iPad|iPod|Android|Macintosh/i.test(userAgent) && isTouchDevice;
+
+    // Combine react-device-detect with custom detection
+    setIsMobileOrTablet(detectMobile || detectTablet || isMobileOrTabletDevice);
   }, []);
 
   const videoJsOptions = {
