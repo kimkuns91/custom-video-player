@@ -18,9 +18,13 @@ import VolumeMuteIcon from "@/icons/VolumeMuteIcon";
 export default function Home() {
   return (
     <div>
-      <Link className="bg-pink-400 px-4 py-2" href={"/watch"}>보러가즈아</Link>
+      <Link className="bg-pink-400 px-4 py-2" href={"/watch"}>
+        보러가즈아
+      </Link>
       <div className="flex items-center justify-center space-x-4 bg-black">
-        <BackwardIcon />
+        <div className="w-10 h-10">
+          <BackwardIcon />
+        </div>
         <ForwardIcon />
         <FullscreenEnterIcon />
         <FullscreenExitIcon />
