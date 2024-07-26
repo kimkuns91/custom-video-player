@@ -1,10 +1,32 @@
+input:focus {
+  outline: none !important;
+}
+video:focus {
+  outline: none !important;
+}
+div:focus {
+  outline: none !important;
+}
+.hidden-control-bar {
+  @apply opacity-0;
+}
+
+.visible-control-bar {
+  @apply opacity-100;
+}
 /* 커스텀 비디오.js 스타일 추가 */
 .vjs-top-control-bar {
-  @apply absolute top-0 left-0 w-full px-8 flex justify-between items-center bg-black/30 z-10;
+  @apply absolute top-0 left-0 w-full p-8 pb-20 flex justify-between items-center z-10;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.65) 70%,
+    rgba(0, 0, 0, 0)
+  );
 }
 
 .vjs-bottom-control-bar {
-  @apply absolute bottom-0 left-0 w-full px-8 flex justify-between items-center bg-black/30 z-10;
+  @apply absolute bottom-0 left-0 w-full p-8 pt-20 flex flex-col space-y-4 z-10;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 70%, rgba(0, 0, 0, 0));
 }
 
 /* 타이틀 스타일 */
@@ -13,7 +35,13 @@
 }
 
 .custom-control-button {
-  @apply text-white flex items-center justify-center w-10 h-10 hover:scale-125 transition-transform duration-200;
+  @apply text-white flex items-center justify-center w-[15%] max-w-12 hover:scale-125 transition-transform duration-200;
+}
+.custom-control-wrapper {
+  @apply relative w-[15%] h-full max-w-12;
+}
+.custom-control-wrapper-button {
+  @apply text-white flex items-center justify-center w-full h-full hover:scale-125 transition-transform duration-200;
 }
 
 .volume-control {
@@ -21,18 +49,37 @@
 }
 
 .volume-slider {
-  @apply absolute bottom-full left-1/2 transform -translate-x-1/2 w-12 h-36 bg-black bg-opacity-70 flex flex-col items-center justify-center p-2;
+  @apply absolute bottom-full left-1/2 transform -translate-x-1/2 w-12 h-36 bg-black bg-opacity-80 flex flex-col items-center justify-center rounded-md p-2;
 }
 
-.volume-slider input {
-  @apply h-2/3 w-24 bg-white appearance-none bg-transparent outline-none transform rotate-90;
+.progress-bar-container {
+  @apply flex items-center justify-between w-full space-x-4;
 }
 
-.volume-slider input::-webkit-slider-thumb {
-  @apply w-4 h-4 bg-white rounded-full cursor-pointer;
-  -webkit-appearance: none;
+.current-time,
+.total-time {
+  @apply text-white text-sm mx-2;
 }
 
-.volume-slider input::-moz-range-thumb {
-  @apply w-4 h-4 bg-white rounded-full cursor-pointer;
+.subtitle-options {
+  position: absolute;
+  bottom: 0;
+  width: 15rem;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  z-index: 20;
+}
+
+.speed-options {
+  position: absolute;
+  width: 15rem;
+  bottom: 0;
+  background-color: #191919;
+  display: flex;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  z-index: 20;
 }

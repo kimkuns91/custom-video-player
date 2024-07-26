@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const FullscreenExitIcon = () => (
+const FullscreenExitIcon: React.FC = () => (
   <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fillRule="evenodd" clipRule="evenodd" d="M5.834 22.925h-.759V16.333h1.517v5.075h5.075v1.517H5.834zm0-17.85h-.759v6.591h1.517V6.591h5.075V5.075H5.834zm17.091 0h-6.592V6.59h5.076v5.075h1.516V5.075zm-.758 17.85h.758V16.333h-1.517v5.075h-5.075v1.517h5.834z" fill="#fff"></path>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M11.258 16.742H4.667v1.517h5.075v5.075h1.516v-6.592zm6.242 0h-.759v6.592h1.517v-5.075h5.075v-1.517H17.5zm0-5.484h-.759V4.667h1.517v5.075h5.075v1.516H17.5zm-7 0h.758V4.667H9.742v5.075H4.666v1.516H10.5z"
+      fill="#fff"
+    ></path>
   </svg>
 );
 
