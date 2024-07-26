@@ -2,7 +2,8 @@ import "./globals.css";
 
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
-import RecoilRootWrapper from '@/components/RecoilWrapper';
+import RecoilRootWrapper from "@/components/RecoilWrapper";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(inter.className, "w-full min-h-screen bg-slate-200")}>
         <RecoilRootWrapper>{children}</RecoilRootWrapper>
       </body>
     </html>
