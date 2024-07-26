@@ -1,14 +1,10 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import {
-  isMobile as detectMobile,
-  isTablet as detectTablet,
-} from "react-device-detect";
+import { isMobile, isTablet } from "react-device-detect";
 
 import Player from "video.js/dist/types/player";
 import VideoJS from "./VideoJS";
-import { fi } from "date-fns/locale";
 import videojs from "video.js";
 
 interface VideoContainerProps {
@@ -17,22 +13,16 @@ interface VideoContainerProps {
 }
 
 const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   useEffect(() => {
-    // setIsMobile(detectMobile);
-    // setIsTablet(detectTablet);
-    const userAgent =
-      typeof window.navigator === "undefined" ? "" : navigator.userAgent;
-    setIsMobile(/iPhone|iPad|iPod|Android/i.test(userAgent));
+    setIsMobileOrTablet(isMobile || isTablet);
   }, []);
 
   const videoJsOptions = {
     autoplay: true,
     controls: false,
     responsive: true,
-    // fluid: true,
     fill: true,
     sources: video.sources,
     tracks: video.tracks,
@@ -52,9 +42,10 @@ const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
     <VideoJS
       title={video.title}
       releaseDate={video.releaseDate}
+      nextVideo={nextVideo}
       options={videoJsOptions}
       onReady={handlePlayerReady}
-      isMobile={isMobile || isTablet} // 모바일 또는 태블릿 감지
+      isMobile={isMobileOrTablet} // 모바일 또는 태블릿 감지
     />
   );
 };
