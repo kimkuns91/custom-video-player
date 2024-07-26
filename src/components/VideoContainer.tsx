@@ -29,7 +29,8 @@ const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
     autoplay: true,
     controls: false,
     responsive: true,
-    fill: true,
+    fill: !isMobileOrTablet,
+    fluid: isMobileOrTablet,
     sources: video.sources,
     tracks: video.tracks,
   };
