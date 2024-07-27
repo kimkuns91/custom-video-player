@@ -35,13 +35,13 @@ div:focus {
 }
 
 .custom-control-button {
-  @apply text-white flex items-center justify-center w-[15%] max-w-12 hover:scale-125 transition-transform duration-200;
+  @apply text-white flex items-center justify-center w-[15%] max-w-12 h-auto max-h-12 hover:scale-125 transition-transform duration-200;
 }
 .custom-control-wrapper {
   @apply relative w-[15%] h-full max-w-12;
 }
 .custom-control-wrapper-button {
-  @apply text-white flex items-center justify-center w-full h-full hover:scale-125 transition-transform duration-200;
+  @apply text-white flex items-center justify-center w-full h-auto max-h-12 hover:scale-125 transition-transform duration-200;
 }
 
 .volume-control {
