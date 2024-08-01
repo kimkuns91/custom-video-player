@@ -12,6 +12,7 @@ interface SliderCardProps {
 const SliderCard: React.FC<SliderCardProps> = ({ data }) => {
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(contentState);
+  
   return (
     <motion.div
       className="relative h-52 min-w-[250px] rounded-2xl shadow-md md:h-80 md:min-w-[250px] cursor-pointer"
