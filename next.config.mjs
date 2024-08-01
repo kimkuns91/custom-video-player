@@ -6,7 +6,7 @@ const nextConfig = {
         KAKAO_CLIENT_ID: process.env.KAKAO_CLIENT_ID,
         KAKAO_CLIENT_SECRET: process.env.KAKAO_CLIENT_SECRET,
     },
-    disableStaticImages: true,
+    // disableStaticImages: true,
     images: {
         disableStaticImages: true,
         remotePatterns: [{
