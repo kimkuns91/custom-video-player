@@ -1,45 +1,17 @@
-import BackIcon from "@/icons/BackIcon";
-import BackwardIcon from "@/icons/BackwardIcon";
-import EpisodeIcon from "@/icons/EpisodeIcon";
-import ForwardIcon from "@/icons/ForwardIcon";
-import FullscreenEnterIcon from "@/icons/FullscreenEnterIcon";
-import FullscreenExitIcon from "@/icons/FullscreenExitIcon";
-import Link from "next/link";
-import NextEpisodeIcon from "@/icons/NextEpisodeIcon";
-import PauseIcon from "@/icons/PauseIcon";
-import PlayIcon from "@/icons/PlayIcon";
-import QualityIcon from "@/icons/QualityIcon";
-import SpeedIcon from "@/icons/SpeedIcon";
-import SubtitleIcon from "@/icons/SubtitleIcon";
-import VolumeHighIcon from "@/icons/VolumeHighIcon";
-import VolumeLowIcon from "@/icons/VolumeLowIcon";
-import VolumeMuteIcon from "@/icons/VolumeMuteIcon";
+import Hero from "@/components/Hero";
+import Row from "@/components/Row";
+import TodayTop10Videos from "@/components/Top10Videos";
+import { getContents } from "@/lib/fetch";
 
-export default function Home() {
+export default async function Home() {
+  const contents = await getContents();
+  const initData = contents[0];
+
   return (
-    <div>
-      <Link className="bg-pink-400 px-4 py-2" href={"/watch"}>
-        보러가즈아
-      </Link>
-      <div className="flex items-center justify-center space-x-4 bg-black">
-        <div className="w-10 h-10">
-          <BackwardIcon />
-        </div>
-        <ForwardIcon />
-        <FullscreenEnterIcon />
-        <FullscreenExitIcon />
-        <NextEpisodeIcon />
-        <PauseIcon />
-        <PlayIcon />
-        <VolumeHighIcon />
-        <VolumeLowIcon />
-        <VolumeMuteIcon />
-        <BackIcon />
-        <EpisodeIcon />
-        <SubtitleIcon />
-        <SpeedIcon />
-        <QualityIcon />
-      </div>
+    <div className="w-full min-h-screen bg-black pb-20">
+      <Hero sliderData={contents} initData={initData} />
+      <TodayTop10Videos contents={contents} />
+      <Row title="지금 뜨는 컨텐츠" contents={contents} />
     </div>
   );
 }

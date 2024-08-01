@@ -45,16 +45,26 @@ const VideoContainer: FC<VideoContainerProps> = ({ video, nextVideo }) => {
     });
   };
 
+  if(isMobileOrTablet) {
+    return(
+      <div>
+        <h1>Mobile and Tablet</h1>
+      </div>
+    )
+  }
   return (
-    <VideoJS
-      title={video.title}
-      releaseDate={video.releaseDate}
-      nextVideo={nextVideo}
-      options={videoJsOptions}
-      onReady={handlePlayerReady}
-      isMobile={isMobileOrTablet} // 모바일 또는 태블릿 감지
-    />
-  );
+    <div>WEB PAGE</div>
+  )
+  // return (
+  //   <VideoJS
+  //     title={video.title}
+  //     releaseDate={video.releaseDate}
+  //     nextVideo={nextVideo}
+  //     options={videoJsOptions}
+  //     onReady={handlePlayerReady}
+  //     isMobile={isMobileOrTablet} // 모바일 또는 태블릿 감지
+  //   />
+  // );
 };
 
 export default VideoContainer;
