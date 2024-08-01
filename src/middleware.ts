@@ -5,6 +5,10 @@ import { getToken } from 'next-auth/jwt';
 export async function middleware(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
+  // 로그 추가
+  console.log('Token:', token);
+  console.log('Request URL:', req.nextUrl);
+
   if (!token) {
     const url = req.nextUrl.clone();
     url.pathname = '/onboarding';
