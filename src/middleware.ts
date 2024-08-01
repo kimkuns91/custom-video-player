@@ -16,5 +16,5 @@ export async function middleware(req: NextRequest) {
 
 // 이 middleware가 적용될 경로를 설정합니다.
 export const config = {
-  matcher: '/((?!onboarding|login|api/auth|_next|static|favicon.ico).*)',
+  matcher: '/((?!onboarding|login|api/auth|_next|static|favicon.ico|images).*)',
 };
