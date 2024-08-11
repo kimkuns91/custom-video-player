@@ -17,7 +17,7 @@ if (
 }
 
 export const authOptions: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
+
   providers: [
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID!,
@@ -53,6 +53,7 @@ export const authOptions: NextAuthOptions = {
     //   },
     // }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
     error: "/error",
